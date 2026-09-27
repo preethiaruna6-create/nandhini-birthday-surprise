@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#160b20">
+    <title>For Nandhini ❤️</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div id="loader">
+        <div class="loader-heart">♥</div>
+        <p>Preparing a little memory...</p>
+    </div>
+
+    <div class="ambient"></div>
+    <div id="hearts"></div>
+    <canvas id="confetti"></canvas>
+
+    <header class="topbar">
+        <div class="brand">for <span>Nandhini</span> ♥</div>
+        <div class="progress"><span id="progressFill"></span></div>
+        <div class="slide-count"><span id="slideNo">1</span>/20</div>
+    </header>
+
+    <main id="story">
+
+        <!-- 1 -->
+        <section class="slide active" data-slide="1">
+            <div class="hero-card">
+                <span class="eyebrow">A tiny surprise • 28 September</span>
+                <h1>Hey Nandhini... <span class="heart">♥</span></h1>
+                <p class="lead">Un birthday-ku oru small surprise pannalam nu nenachen... but idhu normal birthday wish illa.</p>
+                <p class="soft">Konjam memories. Konjam questions. Konjam feelings. 🥹</p>
+                <button class="primary next-btn">Open the surprise 💌</button>
+            </div>
+        </section>
+
+        <!-- 2 -->
+        <section class="slide" data-slide="2">
+            <div class="card">
+                <span class="eyebrow">Chapter 01</span>
+                <h2>Let's go back... 🧸</h2>
+                <p>Do you remember where this friendship started?</p>
+                <div class="options" data-question="Where did our friendship start?" data-correct="LKG">
+                    <button class="option">College 😂</button>
+                    <button class="option">Tuition</button>
+                    <button class="option correct">LKG ❤️</button>
+                    <button class="option">Online 😭</button>
+                </div>
+                <div class="feedback"></div>
+            </div>
+        </section>
+
+        <!-- 3 -->
+        <section class="slide" data-slide="3">
+            <div class="card">
+                <span class="eyebrow">Chapter 02</span>
+                <h2>And then... 🏫</h2>
+                <p>LKG-la meet pannom. Aana friendship epdi start aachu?</p>
+                <div class="options" data-question="How did our friendship start?" data-correct="School-la">
+                    <button class="option">Sharing chocolates 🍫</button>
+                    <button class="option correct">School-la ❤️</button>
+                    <button class="option">Playing games 🎮</button>
+                    <button class="option">I don't remember 🤷‍♀️</button>
+                </div>
+                <div class="feedback"></div>
+            </div>
+        </section>
+
+        <!-- 4 -->
+        <section class="slide" data-slide="4">
+            <div class="card">
+                <span class="eyebrow">Little things</span>
+                <h2>Our first little memory 🍪</h2>
+                <p>Namma first memorable things-la onnu enna?</p>
+                <div class="options" data-question="What was one of our first memorable things?" data-correct="Sharing snacks">
+                    <button class="option">Fighting 😂</button>
+                    <button class="option correct">Sharing snacks 🍪❤️</button>
+                    <button class="option">Taking selfies</button>
+                    <button class="option">Studying together 😭</button>
+                </div>
+                <div class="feedback"></div>
+            </div>
+        </section>
+
+        <!-- 5 -->
+        <section class="slide" data-slide="5">
+            <div class="memory-card">
+                <div class="memory-copy">
+                    <span class="eyebrow">3rd & 4th Standard</span>
+                    <h2>The simplest days were special. 🥹</h2>
+                    <p>No complicated conversations. No overthinking. Just school, laughter, snacks... and us.</p>
+                    <p class="script">Those little days became big memories.</p>
+                </div>
+                <div class="photo-frame tall">
+                    <img src="{{ url_for('static', filename='images/school_memory.jpg') }}" alt="School memory">
+                    <div class="asset-placeholder">school_memory.jpg<br><small>Add your school photo here</small></div>
+                </div>
+            </div>
+            <button class="primary next-btn">Show me another memory →</button>
+        </section>
+
+        <!-- 6 -->
+        <section class="slide" data-slide="6">
+            <div class="card">
+                <span class="eyebrow">Can you remember?</span>
+                <h2>Do you remember this? 👀</h2>
+                <div class="blur-wrap" id="schoolReveal">
+                    <img src="{{ url_for('static', filename='images/old_friendship.jpg') }}" alt="Old school memory">
+                    <div class="asset-placeholder">school_memory.jpg</div>
+                    <div class="blur-overlay">MEMORY<br><span>?</span></div>
+                </div>
+                <p class="caption">This photo may look simple... but it carries a whole chapter.</p>
+                <button class="primary" id="revealPhoto">Reveal memory ✨</button>
+                <button class="next-link hidden" id="afterReveal">Continue →</button>
+            </div>
+        </section>
+
+        <!-- 7 -->
+        <section class="slide" data-slide="7">
+            <div class="card">
+                <span class="eyebrow">Okay, enough emotions 😂</span>
+                <h2>Let's remember the fun version of us.</h2>
+                <video class="memory-video" controls playsinline preload="metadata">
+                    <source src="{{ url_for('static', filename='video/fun_memory.mp4') }}" type="video/mp4">
+                </video>
+                <div class="asset-note">Add your 16-second video as <b>static/video/fun_memory.mp4</b></div>
+                <button class="primary next-btn">Okay... next 😂</button>
+            </div>
+        </section>
+
+        <!-- 8 -->
+        <section class="slide" data-slide="8">
+            <div class="memory-card reverse">
+                <div class="photo-frame tall">
+                    <img src="{{ url_for('static', filename='images/traditional_yellow.jpg') }}" alt="Traditional memory" onerror="this.style.display='none'">
+                    <div class="asset-placeholder">traditional_yellow.jpg</div>
+                </div>
+                <div class="memory-copy">
+                    <span class="eyebrow">One thing about you...</span>
+                    <h2>Three words. ❤️</h2>
+                    <div class="traits">
+                        <span>Kind.</span><span>Lovable.</span><span>Helpful.</span>
+                    </div>
+                    <p>Somehow, these little qualities are part of why you'll always be special to me.</p>
+                </div>
+            </div>
+            <button class="primary next-btn">Next memory →</button>
+        </section>
+
+        <!-- 9 -->
+        <section class="slide quiet">
+            <div class="emotional">
+                <span class="eyebrow">There was one moment...</span>
+                <h2>There was one moment I don't think I'll ever forget.</h2>
+                <p>I joined a different school...</p>
+                <p>And I thought maybe that was where our story would slowly become a memory.</p>
+                <div class="pause-line"></div>
+                <p class="soft">But the story wasn't ending yet.</p>
+                <button class="primary next-btn">Continue 🥹</button>
+            </div>
+        </section>
+
+        <!-- 10 -->
+        <section class="slide">
+            <div class="memory-card">
+                <div class="memory-copy">
+                    <span class="eyebrow">The moment I'll remember</span>
+                    <h2>But you came. 🥹</h2>
+                    <p>You came and joined the same school.</p>
+                    <p>I don't know whether you realised how much that meant to me...</p>
+                    <p class="highlight">But honestly, that was one of the most emotional moments in our friendship. ❤️</p>
+                    <p>I wasn't alone anymore.</p>
+                </div>
+                <div class="photo-frame tall">
+                    <img src="{{ url_for('static', filename='images/old_friendship.jpg') }}" alt="Old friendship photo">
+                    <div class="asset-placeholder">old_friendship.jpg</div>
+                </div>
+            </div>
+            <button class="primary next-btn">Keep going →</button>
+        </section>
+
+        <!-- 11 -->
+        <section class="slide">
+            <div class="memory-card">
+                <div class="photo-frame">
+                    <img src="{{ url_for('static', filename='images/group_memory.jpg') }}" alt="Group memory" onerror="this.style.display='none'">
+                    <div class="asset-placeholder">group_memory.jpg</div>
+                </div>
+                <div class="memory-copy">
+                    <span class="eyebrow">Growing up</span>
+                    <h2>We grew up...</h2>
+                    <p>Different days. Different things. Different people around us.</p>
+                    <p>But somehow...</p>
+                    <p class="highlight">you remained a part of my story.</p>
+                </div>
+            </div>
+            <button class="primary next-btn">Next →</button>
+        </section>
+
+        <!-- 12 -->
+        <section class="slide">
+            <div class="card wide">
+                <span class="eyebrow">Look at you now ✨</span>
+                <h2>How did we grow up this fast? 😭❤️</h2>
+                <div class="photo-frame collage">
+                    <img src="{{ url_for('static', filename='images/pink_saree.jpg') }}" alt="Pink saree memory" onerror="this.style.display='none'">
+                    <div class="asset-placeholder">pink_saree.jpg</div>
+                </div>
+                <button class="primary next-btn">Another memory →</button>
+            </div>
+        </section>
+
+        <!-- 13 -->
+        <section class="slide">
+            <div class="memory-card reverse">
+                <div class="photo-frame tall">
+                    <img src="{{ url_for('static', filename='images/teal_saree.jpg') }}" alt="Birthday portrait" onerror="this.style.display='none'">
+                    <div class="asset-placeholder">teal_saree.jpg</div>
+                </div>
+                <div class="memory-copy">
+                    <span class="eyebrow">A little confession...</span>
+                    <h2>We don't talk like we used to.</h2>
+                    <p>Maybe life became busy. Maybe things changed.</p>
+                    <p>But there's something I never really told you...</p>
+                    <button class="primary" id="confessionBtn">Tell me... 💌</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 14 -->
+        <section class="slide">
+            <div class="letter">
+                <span class="eyebrow">The truth</span>
+                <div id="typedMessage" class="typed"></div>
+                <button class="primary hidden" id="letterNext">Continue ❤️</button>
+            </div>
+        </section>
+
+        <!-- 15 -->
+        <section class="slide">
+            <div class="card">
+                <span class="eyebrow">Now it's your turn 👀</span>
+                <h2>I've been talking a lot...</h2>
+                <p>I want to know what <b>YOU</b> think.</p>
+                <p class="soft">Be honest. No wrong answers. 🥹</p>
+                <button class="primary next-btn">Okay... ask me</button>
+            </div>
+        </section>
+
+        <!-- 16 -->
+        <section class="slide">
+            <div class="card">
+                <span class="eyebrow">Question 01</span>
+                <h2>How do you see me? 👀</h2>
+                <div class="options answer-options" data-question="How do you see me?">
+                    <button class="option save-answer">Close friend ❤️</button>
+                    <button class="option save-answer">Best friend 🫶</button>
+                    <button class="option save-answer">Old but special friend 🥹</button>
+                    <button class="option save-answer">Someone important 💗</button>
+                </div>
+                <div class="answer-saved"></div>
+            </div>
+        </section>
+
+        <!-- 17 -->
+        <section class="slide">
+            <div class="card">
+                <span class="eyebrow">Questions 02 • 03 • 04</span>
+                <h2>Three honest questions... 🥺</h2>
+                <div class="question-stack">
+                    <label>Have I ever hurt you without realising it?</label>
+                    <textarea data-question="Have I ever hurt you without realising it?" placeholder="Tell me honestly..."></textarea>
+
+                    <label>If yes... what did I do?</label>
+                    <textarea data-question="If yes, what did I do?" placeholder="You can say it..."></textarea>
+
+                    <label>Is there anything about the way I talk or behave that you don't like?</label>
+                    <textarea data-question="Is there anything about the way I talk or behave that you don't like?" placeholder="Anything you want me to change..."></textarea>
+                </div>
+                <button class="primary" id="saveTextAnswers">Save my answers & continue ❤️</button>
+                <div class="answer-saved"></div>
+            </div>
+        </section>
+
+        <!-- 18 -->
+        <section class="slide">
+            <div class="card">
+                <span class="eyebrow">One last question...</span>
+                <h2>After all these years...</h2>
+                <p>Forget today. Forget the distance. Forget how much or how little we talk.</p>
+                <p>Just think about all those years...</p>
+                <div class="big-question">Will this friendship stay forever? 🥹❤️</div>
+                <div class="final-options" data-question="Will this friendship stay forever?">
+                    <button class="yes-btn save-answer">YES ❤️</button>
+                    <button class="yes-btn save-answer">Of course 🥹</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 19 -->
+        <section class="slide">
+            <div class="card">
+                <span class="eyebrow">Before you leave...</span>
+                <h2>You probably thought this was just a bunch of questions... 👀</h2>
+                <p>But I actually had something to tell you.</p>
+                <button class="primary next-btn">One last thing 💌</button>
+            </div>
+        </section>
+
+        <!-- 20 -->
+        <section class="slide final-slide" data-slide="20">
+            <div class="final-content">
+                <div class="birthday-badge">28 • SEPTEMBER</div>
+                <h1>HAPPY BIRTHDAY<br><span>NANDHINI V!</span> 🎂❤️</h1>
+                <p class="final-lead">This website is not just a birthday gift...</p>
+
+                <div class="final-gallery">
+                    <div><img src="{{ url_for('static', filename='images/teal_saree.jpg') }}" alt=""></div>
+                    <div><img src="{{ url_for('static', filename='images/school_memory.jpg') }}" alt=""></div>
+                    <div><img src="{{ url_for('static', filename='images/pink_saree.jpg') }}" alt=""></div>
+                    <div><img src="{{ url_for('static', filename='images/traditional_yellow.jpg') }}" alt=""></div>
+                    <div><img src="{{ url_for('static', filename='images/final1.jpg') }}" alt=""></div>
+<div><img src="{{ url_for('static', filename='images/final2.jpg') }}" alt=""></div>
+<div><img src="{{ url_for('static', filename='images/final3.jpg') }}" alt=""></div>
+<div><img src="{{ url_for('static', filename='images/final4.jpg') }}" alt=""></div>
+                </div>
+
+                <div class="final-letter">
+                    <p>We may not talk every day anymore.</p>
+                    <p>We may not be as close as we were when we were little.</p>
+                    <p>But from LKG... from sharing snacks... from our 3rd & 4th standard memories... to the day you came to the same school...</p>
+                    <p class="highlight">you became a part of my life that I can never erase.</p>
+                    <p>I don't know how you see me. I don't know what you think about our friendship now.</p>
+                    <p>But I know one thing...</p>
+                    <p class="big-heart-text">You will always have a special place in my heart. ❤️</p>
+                    <p>Thank you for being a part of so many years of my life.</p>
+                    <p class="script signature">Happy Birthday, Margaret. 🥹❤️</p>
+                    <p class="from">— From someone who still remembers. 💌</p>
+                </div>
+
+                <audio id="bgMusic" loop>
+                    <source src="{{ url_for('static', filename='music/birthday_song.m4a') }}" type="audio/mp4">
+                </audio>
+
+                <button class="music-toggle" id="musicToggle">🎵 Music</button>
+                <button class="restart" id="restart">Replay from beginning ↻</button>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    
+</body>
+</html>
